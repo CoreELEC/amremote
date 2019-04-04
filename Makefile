@@ -1,5 +1,5 @@
 DEPS = remote_config.h keydefine.h
-OBJ = irremote.o config.o parsefile.o
+OBJ = irremote.o parsefile.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
