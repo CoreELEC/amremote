@@ -150,7 +150,7 @@ int main(int argc, char* argv[])
 
 			meson_remote->custom_code = custom_remote->factory_code;
 			meson_remote->map_size = custom_remote->key_count;
-			meson_remote->release_delay = custom_remote->repeat_delay;
+			meson_remote->release_delay = custom_remote->repeat_delay ? custom_remote->repeat_delay : 150;
 			meson_remote->cursor_code.fn_key_scancode = custom_remote->fn_key_scancode;
 			meson_remote->cursor_code.cursor_left_scancode = custom_remote->left_key_scancode;
 			meson_remote->cursor_code.cursor_right_scancode = custom_remote->right_key_scancode;
