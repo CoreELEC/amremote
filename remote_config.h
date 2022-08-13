@@ -45,10 +45,14 @@ typedef struct {
 	unsigned int ok_key_scancode;
 	unsigned int pageup_key_scancode;
 	unsigned int pagedown_key_scancode;
+// linux 5.4
+	unsigned int vendor;
+	unsigned int product;
+	unsigned int version;
 } remote_config_t;
 
 //these string must in this order and sync with struct remote_config_t
-extern char*  config_item[33];
+extern char*  config_item[36];
 
 extern int malloc_new_remote(remote_config_t **remote);
 extern int get_config_from_file(FILE *fp, remote_config_t *remotes[]);

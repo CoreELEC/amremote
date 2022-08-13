@@ -158,6 +158,11 @@ int main(int argc, char* argv[])
 			meson_remote->cursor_code.cursor_down_scancode = custom_remote->down_key_scancode;
 			meson_remote->cursor_code.cursor_ok_scancode = custom_remote->ok_key_scancode;
 
+			// linux 5.4
+			meson_remote->vendor = custom_remote->vendor;
+			meson_remote->product = custom_remote->product;
+			meson_remote->version = custom_remote->version;
+
 			for (j = 0; j < MAX_KEY_MAPS; j++)
 			{
 				if (custom_remote->key_map[j] != KEY_RESERVED)

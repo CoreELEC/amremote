@@ -6,7 +6,7 @@
 #include "remote_config.h"
 
 //these string must in this order and sync with struct remote_config_t
-char*  config_item[33] = {
+char*  config_item[36] = {
 	"factory_infcode",
 	"factory_unfcode",
 	"factory_code",
@@ -43,5 +43,9 @@ char*  config_item[33] = {
 	"ok_key_scancode",
 	"pageup_key_scancode",
 	"pagedown_key_scancode",
+	// linux 5.4
+	"vendor",
+	"product",
+	"version",
 };
 #endif

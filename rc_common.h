@@ -14,7 +14,7 @@
 #define CUSTOM_NAME_LEN 64
 
 /*to ensure kernel and user spase use the same header file*/
-#define SHARE_DATA_VERSION "v1.1.0"
+#define SHARE_DATA_VERSION "v1.1.1"
 
 union _codemap {
 	struct ir_key_map {
@@ -27,7 +27,7 @@ union _codemap {
 /*
  *struct cursor_codemap - codemap for mouse mode
  *
- *@fn_key_scancode: scancode of fn key which used to swith mode
+ *@fn_key_scancode: scancode of fn key which used to swicth mode
  *@cursor_left_scancode: scancode of left key
  *@cursor_right_scancode: scancode of right key
  *@cursor_up_scancode: scancode of up key
@@ -59,6 +59,9 @@ struct ir_map_tab {
 	__u16 map_size;
 	__u32 custom_code;
 	__u32 release_delay;
+	__u32 vendor;
+	__u32 product;
+	__u32 version;
 	union _codemap codemap[0];
 };
 
