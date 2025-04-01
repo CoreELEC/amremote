@@ -109,7 +109,8 @@ int main(int argc, char* argv[])
                 remote->factory_code = 0x40400001;
                 remote->work_mode = 1;
                 remote->repeat_enable = 1;
-                remote->release_delay = 150;
+                remote->release_delay = 20;
+                remote->repeat_delay = 80;
                 remote->debug_enable = 1;
                 remote->reg_control = 0xfbe40;
                 remote->repeat_delay = 250;
@@ -150,7 +151,9 @@ int main(int argc, char* argv[])
 
 			meson_remote->custom_code = custom_remote->factory_code;
 			meson_remote->map_size = custom_remote->key_count;
-			meson_remote->release_delay = custom_remote->repeat_delay ? custom_remote->repeat_delay : 150;
+			meson_remote->release_delay = custom_remote->release_delay ? custom_remote->release_delay : 20;
+			meson_remote->repeat_enable = custom_remote->repeat_enable;
+			meson_remote->repeat_delay = custom_remote->repeat_delay ? custom_remote->repeat_delay : 80;
 			meson_remote->cursor_code.fn_key_scancode = custom_remote->fn_key_scancode;
 			meson_remote->cursor_code.cursor_left_scancode = custom_remote->left_key_scancode;
 			meson_remote->cursor_code.cursor_right_scancode = custom_remote->right_key_scancode;
@@ -158,10 +161,11 @@ int main(int argc, char* argv[])
 			meson_remote->cursor_code.cursor_down_scancode = custom_remote->down_key_scancode;
 			meson_remote->cursor_code.cursor_ok_scancode = custom_remote->ok_key_scancode;
 
-			// linux 5.4
-			meson_remote->vendor = custom_remote->vendor;
-			meson_remote->product = custom_remote->product;
-			meson_remote->version = custom_remote->version;
+			// linux 5.15
+			meson_remote->id.bustype = BUS_ISA;
+			meson_remote->id.vendor =  0x0001;
+			meson_remote->id.product = 0x0001;
+			meson_remote->id.version = 0x0100;
 
 			for (j = 0; j < MAX_KEY_MAPS; j++)
 			{

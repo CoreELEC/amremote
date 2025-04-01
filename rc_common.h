@@ -8,13 +8,14 @@
 #ifndef _UAPI_RC_COMMON_H_
 #define _UAPI_RC_COMMON_H_
 
+#include <linux/input.h>
 #include <linux/types.h>
 
 #define MAX_KEYMAP_SIZE 256
 #define CUSTOM_NAME_LEN 64
 
 /*to ensure kernel and user spase use the same header file*/
-#define SHARE_DATA_VERSION "v1.1.1"
+#define SHARE_DATA_VERSION "v1.1.2"
 
 union _codemap {
 	struct ir_key_map {
@@ -51,6 +52,9 @@ struct cursor_codemap {
  *@map_size: number of IR key
  *@custom_code: custom code, identify different key mapping table
  *@release_delay: release delay time
+ *@repeat_enable: repeat enable
+ *@repeat_delay: repeat delay time
+ *@id: input_id
  *@codemap[0]: code for IR key
  */
 struct ir_map_tab {
@@ -59,9 +63,9 @@ struct ir_map_tab {
 	__u16 map_size;
 	__u32 custom_code;
 	__u32 release_delay;
-	__u32 vendor;
-	__u32 product;
-	__u32 version;
+	__u32 repeat_enable;
+	__u32 repeat_delay;
+	struct input_id id;
 	union _codemap codemap[0];
 };
 
